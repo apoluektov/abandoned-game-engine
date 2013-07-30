@@ -1,0 +1,52 @@
+########################################################################################################################
+# Copyright 2009 Alexander Poluektov
+# All rights reserved
+########################################################################################################################
+
+# $Id: //depot/main/Main/Jamfile#5 $
+# $DateTime: 2009/08/12 00:03:18 $
+
+# Main application build instructions.
+
+########################################################################################################################
+
+import testing ;
+
+
+exe main_app
+    :
+    main.cpp
+    /Third_party//user32
+    /Engine/Timing//Timing
+    /Engine/Logging//Logging
+    /Engine/Window//Window
+    /Engine/Rendering//Rendering
+    /Engine/Input//Input
+    :
+    <dependency>res/banana.bmp
+    <dependency>res/stain.bmp
+    ;
+
+alias raw_pictures : [ glob res/*.bmp ] ;
+
+copy-bmp pics
+    :
+    raw_pictures
+    ;
+
+install app
+    :
+    main_app
+    raw_pictures
+    :
+    <variant>debug:<location>$(TOP)_build/final/debug
+    <variant>release:<location>$(TOP)_build/final/release
+    ;
+
+unit-test main_app_log_test
+    :
+    main_app
+    :
+    <testing.launcher>"perl Test/Test_cases/trivial.pl"
+    <dependency>../Test/Test_cases/trivial.pl
+    ;

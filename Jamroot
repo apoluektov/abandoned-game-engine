@@ -1,0 +1,44 @@
+########################################################################################################################
+# Copyright 2009 Alexander Poluektov
+# All rights reserved
+########################################################################################################################
+
+# $Id: //depot/main/Jamroot#6 $
+# $DateTime: 2009/08/14 13:58:31 $
+
+# Top-level project jamfile.
+
+########################################################################################################################
+
+path-constant TOP : . ;
+
+import resources ;
+
+project Arcanoid
+    : default-build
+    # link CRT statically
+    <runtime-link>static
+    # include directories for libraries used
+    <include>"C:/Program Files/Microsoft DirectX SDK (March 2009)/Include"
+    <include>"C:/Program Files/boost/boost_1_34_1"
+    <include>"C:/Program Files/Microsoft Platform SDK for Windows Server 2003 R2/Include"
+    # include directory of project
+    <include>.
+    # include directory of tests
+    #<include>./test
+    # all libraries link static by default
+    <link>static
+    : build-dir $(TOP)_build/intermediate
+    : requirements
+    <define>_SCL_SECURE_NO_DEPRECATE
+    <define>_SCL_SECURE_NO_WARNINGS
+    <define>_CRT_NONSTDC_NO_DEPRECATE
+    ;
+
+build-project Common ;
+build-project Engine ;
+build-project Main ;
+
+use-project /Third_party : ./Third_party ;
+use-project /Engine : ./Engine ;
+use-project /Main : ./Main ;

@@ -1,0 +1,22 @@
+########################################################################################################################
+# Copyright 2009 Alexander Poluektov
+# All rights reserved
+########################################################################################################################
+
+# $Id: //depot/main/Engine/Rendering/Jamfile#1 $
+# $DateTime: 2009/08/05 15:00:45 $
+
+# Engine.Rendering build instructions.
+
+########################################################################################################################
+
+import testing ;
+
+lib Rendering
+   :
+   src/Direct3D/Direct3D_renderer.cpp
+   src/Direct3D/Direct3D_system.cpp
+   /Third_party//d3d9
+   /Third_party//d3dx9 ;
+
+compile test/Compile_test.cpp ;

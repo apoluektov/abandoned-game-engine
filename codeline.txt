@@ -1,0 +1,23 @@
+########################################################################################################################
+# Copyright 2009 Alexander Poluektov
+# All rights reserved
+########################################################################################################################
+
+# $Id: //depot/main/codeline.txt#1 $
+# $DateTime
+
+# Contains this codeline specific information
+
+########################################################################################################################
+
+Codeline: main
+
+Purpose: Main codeline. Receives tested changes from its children.
+No new stuff should be developed here. Only bugfixes and integrations are allowed.
+
+Owner: apoluektov
+
+Policies:
+1) Submit only code that is compilable and fully tested
+2) Receive changes from children by copy, at the points of completion
+3) Propagate changes to children by merging, daily

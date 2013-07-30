@@ -1,0 +1,28 @@
+########################################################################################################################
+# Copyright 2009 Alexander Poluektov
+# All rights reserved
+########################################################################################################################
+
+# $Id: //depot/main/Engine/Jamfile#5 $
+# $DateTime: 2009/08/12 00:03:18 $
+
+# Engine.Logging build instructions.
+
+########################################################################################################################
+
+project Engine ;
+
+build-project Logging ;
+use-project /Engine/Logging : Logging ;
+
+build-project Timing ;
+use-project /Engine/Timing : Timing ;
+
+build-project Window ;
+use-project /Engine/Window : Window ;
+
+build-project Rendering ;
+use-project /Engine/Rendering : Rendering ;
+
+build-project Input ;
+use-project /Engine/Input : Input ;

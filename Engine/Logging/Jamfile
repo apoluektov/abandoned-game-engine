@@ -1,0 +1,30 @@
+########################################################################################################################
+# Copyright 2009 Alexander Poluektov
+# All rights reserved
+########################################################################################################################
+
+# $Id: //depot/main/Engine/Logging/Jamfile#2 $
+# $DateTime: 2009/07/30 12:22:26 $
+
+# Engine.Logging build instructions.
+
+########################################################################################################################
+
+import testing ;
+
+lib Logging : src/Logging.cpp ;
+
+rule run-test-logging ( sources * : requirements * )
+{
+    run $(sources) /Engine/Logging//Logging /third-party//boost-test : $(requirements) ;
+}
+
+test-suite Logging_test
+    :
+    [ run-test-logging test/Logging_default_init.cpp ]
+    [ run-test-logging test/Logging_init_default_timer_non_default_out.cpp ]
+    [ run-test-logging test/Logging_init_non_default_timer_default_out.cpp ]
+    [ run-test-logging test/Logging_non_default_init.cpp ]
+    [ run-test-logging test/Logging_set_global_message_level.cpp ]
+    [ run-test-logging test/Logging_set_message_level.cpp ]
+;

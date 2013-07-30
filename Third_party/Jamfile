@@ -1,0 +1,42 @@
+########################################################################################################################
+# Copyright 2009 Alexander Poluektov
+# All rights reserved
+########################################################################################################################
+
+# $Id: //depot/main/Third_party/Jamfile#3 $
+# $DateTime: 2009/07/30 12:22:26 $
+
+# Contains names for third-party pre-built libs.
+
+########################################################################################################################
+
+project third-party ;
+
+lib d3d9
+    :
+    : <file>"C:/Program Files/Microsoft DirectX SDK (March 2009)/Lib/x86/d3d9.lib"
+    ;
+
+lib d3dx9
+    :
+    : <file>"C:/Program Files/Microsoft DirectX SDK (March 2009)/Lib/x86/d3dx9.lib"
+    ;
+
+lib user32
+    :
+    : <file>"C:/Program Files/Microsoft Platform SDK for Windows Server 2003 R2/Lib/user32.lib"
+    ;
+
+lib boost-test
+    :
+    :
+    <file>"C:/Program Files/boost/boost_1_34_1/lib/libboost_unit_test_framework-vc80-mt-sgd-1_34_1.lib"
+    <variant>debug
+    ;
+
+lib boost-test
+    :
+    :
+    <file>"C:/Program Files/boost/boost_1_34_1/lib/libboost_unit_test_framework-vc80-mt-s-1_34_1.lib"
+    <variant>release
+    ;

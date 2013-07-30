@@ -1,0 +1,43 @@
+########################################################################################################################
+# Copyright 2009 Alexander Poluektov
+# All rights reserved
+########################################################################################################################
+
+# $Id: //depot/main/resources.jam#1 $
+# $DateTime: 2009/08/05 15:00:45 $
+
+# Rules for copy resources to build directory.
+
+########################################################################################################################
+
+import type ;
+import generators ;
+
+type.register BMP : bmp ;
+type.register COPY_ONE_BMP : : BMP ;
+type.register COPY_BMP : updated ;
+
+generators.register-standard  resources.copy-one-bmp : BMP : COPY_ONE_BMP ;
+generators.register-composing resources.copy-bmp : COPY_ONE_BMP : COPY_BMP ;
+
+rule copy-one-bmp ( name : file-name : requirements * )
+{
+}
+
+actions copy-one-bmp
+{
+   cp $(>) $(<)
+}
+
+rule copy-bmp ( name : file-names * : requirements * )
+{
+   for local n in $(file-names)
+   {
+      copy-one-bmp $(name:G) : $(n) : $(requirements) ;
+   }
+}
+
+actions copy-bmp
+{
+   echo done > $(<)
+}
